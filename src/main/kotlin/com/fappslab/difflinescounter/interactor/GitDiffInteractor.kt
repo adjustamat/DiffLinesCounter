@@ -6,20 +6,34 @@ import com.intellij.openapi.project.Project
 import java.io.File
 
 private const val ACTION_ID = "ChangesView.Refresh"
+private const val IS_INSIDE_WORK_TREE = "true"
 private const val CHANGES_PATTERN =
     "\\d+ files? changed(?:, (\\d+) insertions?\\(\\+\\))?(?:, (\\d+) deletions?\\(-\\))?"
 
 class GitDiffInteractor(private val repoDirectory: File) {
 
-    fun getCurrentBranch(): String? {
+    private fun isGitRepository(): Boolean {
         return runCatching {
-            if (!File(repoDirectory, ".git").exists()) throw IllegalStateException("Not a Git repository")
-            val process = ProcessBuilder("git", "rev-parse", "--abbrev-ref", "HEAD")
+            val process = ProcessBuilder("git", "rev-parse", "--is-inside-work-tree")
                 .directory(repoDirectory)
                 .start()
             process.waitFor()
             process.inputStream.bufferedReader().use { it.readLine() }
-        }.getOrNull()
+        }.mapCatching { it == IS_INSIDE_WORK_TREE }
+            .getOrDefault(defaultValue = false)
+    }
+
+    fun getCurrentBranch(): String? {
+        return if (isGitRepository()) {
+            runCatching {
+                val process = ProcessBuilder("git", "rev-parse", "--abbrev-ref", "HEAD")
+                    .directory(repoDirectory)
+                    .start()
+                process.waitFor()
+                process.inputStream.bufferedReader().use { it.readLine() }
+            }.getOrNull()
+
+        } else null
     }
 
     fun getChangedLines(currentBranch: String): String? {
