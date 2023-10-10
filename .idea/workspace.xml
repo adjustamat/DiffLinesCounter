@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4f9468-823d-4751-96a4-3840fc3057d6" name="Changes" comment="Added: Create plugin">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/fappslab/difflinescounter/ShowDiffAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/fappslab/difflinescounter/ShowDiffAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/fappslab/difflinescounter/interactor/GitDiffInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/fappslab/difflinescounter/interactor/GitDiffInteractor.kt" afterDir="false" />
+    <list default="true" id="9b4f9468-823d-4751-96a4-3840fc3057d6" name="Changes" comment="Changed: Update icons for marketplace">
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +65,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/IntelliJIDEAProjects/DiffLinesCounter/src/main/resources/icons"
+    "last_opened_file_path": "D:/IntelliJIDEAProjects/DiffLinesCounter/src/main/resources/META-INF",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\META-INF" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\icons" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\kotlin\com\fappslab\difflinescounter" />
@@ -101,7 +102,31 @@
       <option name="project" value="LOCAL" />
       <updated>1696901904813</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added: Git initialization check and improve user message">
+      <option name="closed" value="true" />
+      <created>1696902608815</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696902608815</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changed: Setup dialog title">
+      <option name="closed" value="true" />
+      <created>1696902741171</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696902741171</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changed: Update icons for marketplace">
+      <option name="closed" value="true" />
+      <created>1696945073291</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696945073291</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,6 +143,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create base project" />
     <MESSAGE value="Added: Create plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added: Create plugin" />
+    <MESSAGE value="Added: Git initialization check and improve user message" />
+    <MESSAGE value="Changed: Setup dialog title" />
+    <MESSAGE value="Changed: Update icons for marketplace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed: Update icons for marketplace" />
   </component>
 </project>
