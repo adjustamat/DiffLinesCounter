@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4f9468-823d-4751-96a4-3840fc3057d6" name="Changes" comment="Changed: Update icons for marketplace">
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+    <list default="true" id="9b4f9468-823d-4751-96a4-3840fc3057d6" name="Changes" comment="Changed: Version bump">
+      <change afterPath="$PROJECT_DIR$/sources/button.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,16 +65,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/IntelliJIDEAProjects/DiffLinesCounter/src/main/resources/META-INF",
+    "last_opened_file_path": "D:/IntelliJIDEAProjects/DiffLinesCounter/src/main/resources/icons",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\META-INF" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\icons" />
+      <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\META-INF" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\kotlin\com\fappslab\difflinescounter" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\sources" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -126,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1696945073291</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Changed: Version bump">
+      <option name="closed" value="true" />
+      <created>1696945160131</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696945160131</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changed: Version bump">
+      <option name="closed" value="true" />
+      <created>1696945166930</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696945166930</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +165,7 @@
     <MESSAGE value="Added: Git initialization check and improve user message" />
     <MESSAGE value="Changed: Setup dialog title" />
     <MESSAGE value="Changed: Update icons for marketplace" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed: Update icons for marketplace" />
+    <MESSAGE value="Changed: Version bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed: Version bump" />
   </component>
 </project>
