@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4f9468-823d-4751-96a4-3840fc3057d6" name="Changes" comment="Added: Create download button">
+    <list default="true" id="9b4f9468-823d-4751-96a4-3840fc3057d6" name="Changes" comment="Changed: Update README file">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,12 +65,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/IntelliJIDEAProjects/DiffLinesCounter/src/main/resources/icons",
+    "last_opened_file_path": "D:/IntelliJIDEAProjects/DiffLinesCounter/sources",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\sources" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\icons" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources\META-INF" />
       <recent name="D:\IntelliJIDEAProjects\DiffLinesCounter\src\main\resources" />
@@ -153,7 +154,31 @@
       <option name="project" value="LOCAL" />
       <updated>1696948085262</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed: Update README file">
+      <option name="closed" value="true" />
+      <created>1696948812489</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696948812489</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Changed: Update README file">
+      <option name="closed" value="true" />
+      <created>1696948952263</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696948952263</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Changed: Update README file">
+      <option name="closed" value="true" />
+      <created>1696949082686</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696949082686</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +200,7 @@
     <MESSAGE value="Changed: Update icons for marketplace" />
     <MESSAGE value="Changed: Version bump" />
     <MESSAGE value="Added: Create download button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added: Create download button" />
+    <MESSAGE value="Changed: Update README file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed: Update README file" />
   </component>
 </project>
