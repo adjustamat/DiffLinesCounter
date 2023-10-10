@@ -27,4 +27,16 @@
     <extensions defaultExtensionNs="com.intellij">
 
     </extensions>
+
+    <actions>
+        <action
+                id="com.fappslab.difflinescounter.ShowDiffAction"
+                class="com.fappslab.difflinescounter.ShowDiffAction"
+                icon="/icons/ic_plugin.svg"
+                text="Diff Lines Counter"
+                description="Show diff statistics">
+            <add-to-group group-id="NavBarToolBar" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl D"/>
+        </action>
+    </actions>
 </idea-plugin>
