@@ -13,6 +13,7 @@ class GitDiffInteractor(private val repoDirectory: File) {
 
     fun getCurrentBranch(): String? {
         return runCatching {
+            if (!File(repoDirectory, ".git").exists()) throw IllegalStateException("Not a Git repository")
             val process = ProcessBuilder("git", "rev-parse", "--abbrev-ref", "HEAD")
                 .directory(repoDirectory)
                 .start()

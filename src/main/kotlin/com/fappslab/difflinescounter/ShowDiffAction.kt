@@ -15,9 +15,17 @@ class ShowDiffAction : AnAction() {
         val dataContext = interactor.createDataContext(event.project)
         interactor.refreshChanges(dataContext)
 
-        val currentBranch = interactor.getCurrentBranch() ?: return
-        val changedLines = interactor.getChangedLines(currentBranch)
+        val currentBranch = interactor.getCurrentBranch()
 
+        if (currentBranch == null) {
+            Messages.showInfoMessage(
+                "Please initialize your project as a Git repository to use this feature.",
+                "Git Initialization Required"
+            )
+            return
+        }
+
+        val changedLines = interactor.getChangedLines(currentBranch)
         changedLines?.let { output ->
             val (insertions, deletions) = interactor.getInteractionsPair(output)
             showInfo(output, insertions, deletions)
