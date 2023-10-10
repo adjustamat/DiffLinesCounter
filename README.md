@@ -4,3 +4,5 @@ DiffLinesCounter is an open-source IntelliJ-based IDE plugin designed to provide
 <a href='https://plugins.jetbrains.com/plugin/22879'>
   <img alt='Get from Marketplace' src='sources/button.svg' width='250'/>
 </a>
+
+![frame.png](sources/frame.png)
