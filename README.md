@@ -5,4 +5,4 @@ DiffLinesCounter is an open-source IntelliJ-based IDE plugin designed to provide
   <img alt='Get from Marketplace' src='sources/button.svg' width='250'/>
 </a>
 
-![frame.png](sources/frame.png)
+<img src="sources/frame.png" alt="frame" width="700"/>
