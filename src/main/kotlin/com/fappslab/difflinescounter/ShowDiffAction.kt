@@ -39,6 +39,6 @@ class ShowDiffAction : AnAction() {
             Total changes: $totalChanges
         """.trimIndent()
 
-        Messages.showInfoMessage(message, "Diff Lines Report")
+        Messages.showInfoMessage(message, "Diff Lines Counter")
     }
 }
