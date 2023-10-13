@@ -25,19 +25,8 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
+        <statusBarWidgetFactory
+                implementation="com.fappslab.difflinescounter.presentation.StatusBarFactory" id="DiffLinesCounter"/>
     </extensions>
 
-    <actions>
-        <action
-                id="com.fappslab.difflinescounter.ShowDiffAction"
-                class="com.fappslab.difflinescounter.ShowDiffAction"
-                icon="/icons/ic_plugin.svg"
-                text="Diff Lines Counter"
-                description="Show diff statistics">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-            <add-to-group group-id="NavBarToolBar" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl D"/>
-        </action>
-    </actions>
 </idea-plugin>

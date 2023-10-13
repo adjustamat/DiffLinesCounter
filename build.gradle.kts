@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.fappslab"
-version = "1.1.1"
+version = "2.0.0"
 
 repositories {
     mavenCentral()
@@ -43,5 +43,11 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
+    }
+}
+
+dependencies {
+    implementation(dependencyNotation = "org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r") {
+        exclude(group = "org.slf4j")
     }
 }
