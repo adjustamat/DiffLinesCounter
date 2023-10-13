@@ -2,7 +2,7 @@ package com.fappslab.difflinescounter.presentation
 
 import com.fappslab.difflinescounter.data.git.GitRepository
 import com.fappslab.difflinescounter.data.repository.DiffLinesCounterRepositoryImpl
-import com.fappslab.difflinescounter.data.source.DiffLinesCounterDataSourceJGitImpl
+import com.fappslab.difflinescounter.data.source.DiffLinesCounterDataSourceCmdImpl
 import com.fappslab.difflinescounter.domain.repository.DiffLinesCounterRepository
 import com.fappslab.difflinescounter.domain.usecase.GetDiffStatUseCase
 import com.fappslab.difflinescounter.extension.orFalse
@@ -48,7 +48,7 @@ class StatusBarFactory : StatusBarWidgetFactory {
 
     private fun provideRepository(): DiffLinesCounterRepository {
         return DiffLinesCounterRepositoryImpl(
-            dataSource = DiffLinesCounterDataSourceJGitImpl()
+            dataSource = DiffLinesCounterDataSourceCmdImpl()
         )
     }
 }

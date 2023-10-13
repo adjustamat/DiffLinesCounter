@@ -24,7 +24,7 @@ private const val DELAY = 60L
 private const val ACTION_ID = "ChangesView.Refresh"
 private const val ICON_PATH = "AllIcons.Actions.Refresh"
 private const val TOOLTIP_FORMAT = "%d files changed, %d insertions(+), %d deletions(-)"
-private const val TEXT_FORMAT = "changes: %d(+%d|- %d)"
+private const val TEXT_FORMAT = "changes: %d(+%d|-%d)"
 
 class DiffStatusWidget(
     private val project: Project,
@@ -114,10 +114,10 @@ class DiffStatusWidget(
         }
 
         fun showChanges(stat: DiffStat?) {
-            val zeroedStat = stat.getOrZero()
+            val statOrZero = stat.getOrZero()
 
-            toolTipText = zeroedStat.formatForTooltip()
-            text = zeroedStat.formatForText()
+            toolTipText = statOrZero.formatForTooltip()
+            text = statOrZero.formatForText()
         }
 
         private fun DiffStat?.getOrZero(): DiffStat {

@@ -11,7 +11,7 @@ class DiffLinesCounterDataSourceCmdImpl : DiffLinesCounterDataSource {
             val process = ProcessBuilder("git", "diff", "HEAD", "--stat")
                 .directory(basePath?.let(::File))
                 .start()
-            process.waitFor()
+            //process.waitFor()
 
             val changes = process.inputStream.bufferedReader().useLines { it.lastOrNull() }
             changes.toDiffStat()
