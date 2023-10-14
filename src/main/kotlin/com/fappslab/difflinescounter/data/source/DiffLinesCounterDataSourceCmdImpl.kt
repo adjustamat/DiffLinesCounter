@@ -2,19 +2,26 @@ package com.fappslab.difflinescounter.data.source
 
 import com.fappslab.difflinescounter.data.model.toDiffStat
 import com.fappslab.difflinescounter.domain.model.DiffStat
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.File
 
-class DiffLinesCounterDataSourceCmdImpl : DiffLinesCounterDataSource {
+class DiffLinesCounterDataSourceCmdImpl(
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : DiffLinesCounterDataSource {
 
-    override fun query(basePath: String?): DiffStat? {
-        return runCatching {
-            val process = ProcessBuilder("git", "diff", "HEAD", "--stat")
-                .directory(basePath?.let(::File))
-                .start()
-            //process.waitFor()
+    override suspend fun query(basePath: String?): DiffStat? {
+        return withContext(dispatcher) {
+            runCatching {
+                val diffProcess = ProcessBuilder("git", "diff", "HEAD", "--stat")
+                    .directory(basePath?.let(::File))
+                    .start()
+                //diffProcess.waitFor()
 
-            val changes = process.inputStream.bufferedReader().useLines { it.lastOrNull() }
-            changes.toDiffStat()
-        }.getOrNull()
+                val changes = diffProcess.inputStream.bufferedReader().useLines { it.lastOrNull() }
+                changes.toDiffStat()
+            }.getOrNull()
+        }
     }
 }

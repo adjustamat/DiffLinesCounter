@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.fappslab"
-version = "2.0.1"
+version = "2.0.2"
 
 repositories {
     mavenCentral()

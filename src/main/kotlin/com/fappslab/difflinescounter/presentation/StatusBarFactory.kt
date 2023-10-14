@@ -5,6 +5,7 @@ import com.fappslab.difflinescounter.data.repository.DiffLinesCounterRepositoryI
 import com.fappslab.difflinescounter.data.source.DiffLinesCounterDataSourceCmdImpl
 import com.fappslab.difflinescounter.domain.repository.DiffLinesCounterRepository
 import com.fappslab.difflinescounter.domain.usecase.GetDiffStatUseCase
+import com.fappslab.difflinescounter.domain.usecase.ScheduleUpdatesUseCase
 import com.fappslab.difflinescounter.extension.orFalse
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Disposer
@@ -12,16 +13,16 @@ import com.intellij.openapi.wm.StatusBar
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.openapi.wm.StatusBarWidgetFactory
 
-const val DISPLAY_NAME = "DiffLinesCounter"
+const val PLUGIN_NAME = "DiffLinesCounter"
 
 class StatusBarFactory : StatusBarWidgetFactory {
 
     override fun getId(): String {
-        return this::class.java.name
+        return PLUGIN_NAME
     }
 
     override fun getDisplayName(): String {
-        return DISPLAY_NAME
+        return PLUGIN_NAME
     }
 
     override fun isAvailable(project: Project): Boolean {
@@ -31,7 +32,13 @@ class StatusBarFactory : StatusBarWidgetFactory {
     }
 
     override fun createWidget(project: Project): StatusBarWidget {
-        return DiffStatusWidget(project, GetDiffStatUseCase(provideRepository()))
+        val repository = provideRepository()
+        return DiffStatusWidget(
+            project = project,
+            component = DiffStatusLabel(),
+            getDiffStatUseCase = GetDiffStatUseCase(repository),
+            scheduleUpdatesUseCase = ScheduleUpdatesUseCase()
+        )
     }
 
     override fun disposeWidget(widget: StatusBarWidget) {
