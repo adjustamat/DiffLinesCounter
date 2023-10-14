@@ -7,12 +7,12 @@ import javax.swing.JLabel
 
 private const val ICON_PATH = "AllIcons.Actions.Refresh"
 private const val TOOLTIP_FORMAT = "%d files changed, %d insertions(+), %d deletions(-)"
-private const val TEXT_FORMAT = "changes: %d(+%d|-%d)"
+private const val TEXT_FORMAT = "%d (+%d : %d-)"
 
 class DiffStatusLabel : JLabel() {
 
     init {
-        setIcon(IconLoader.getIcon(ICON_PATH, this::class.java))
+        icon = IconLoader.getIcon(ICON_PATH, this::class.java)
         showChanges(null)
     }
 
