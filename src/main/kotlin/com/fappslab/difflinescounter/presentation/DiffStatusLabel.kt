@@ -7,7 +7,9 @@ import javax.swing.JLabel
 
 private const val ICON_PATH = "AllIcons.Actions.Refresh"
 private const val TOOLTIP_FORMAT = "%d files changed, %d insertions(+), %d deletions(-)"
-private const val TEXT_FORMAT = "%d (+%d : %d-)"
+
+private const val TEXT_FORMAT = "%d(+%d : -%d)"
+//private const val TEXT_FORMAT = "<html>%d(<font color='#499C54'>%d↑</font> : <font color='#FF6347'>%d↓</font>)</html>"
 
 class DiffStatusLabel : JLabel() {
 

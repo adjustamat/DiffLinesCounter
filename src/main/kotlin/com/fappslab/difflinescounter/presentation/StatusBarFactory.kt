@@ -1,6 +1,7 @@
 package com.fappslab.difflinescounter.presentation
 
 import com.fappslab.difflinescounter.data.git.GitRepository
+import com.fappslab.difflinescounter.data.service.ProcessExecutorImpl
 import com.fappslab.difflinescounter.data.repository.DiffLinesCounterRepositoryImpl
 import com.fappslab.difflinescounter.data.source.DiffLinesCounterDataSourceCmdImpl
 import com.fappslab.difflinescounter.domain.repository.DiffLinesCounterRepository
@@ -55,7 +56,9 @@ class StatusBarFactory : StatusBarWidgetFactory {
 
     private fun provideRepository(): DiffLinesCounterRepository {
         return DiffLinesCounterRepositoryImpl(
-            dataSource = DiffLinesCounterDataSourceCmdImpl()
+            dataSource = DiffLinesCounterDataSourceCmdImpl(
+                executor = ProcessExecutorImpl()
+            )
         )
     }
 }

@@ -18,7 +18,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.swing.JComponent
 
-private const val REFRESH_DELAY = 60L
+private const val REFRESH_DELAY = 30L
 
 class DiffStatusWidget(
     private val project: Project,
