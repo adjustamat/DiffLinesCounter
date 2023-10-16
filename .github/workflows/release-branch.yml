@@ -1,0 +1,67 @@
+name: Release Branch
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check_environment:
+    name: Check Environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if Running on develop
+        run: |
+          if [[ "${{ github.ref }}" != "refs/heads/develop" ]]; then
+            echo "This workflow can only be run on the develop branch. Exiting."
+            exit 1
+          fi
+
+      - name: Check Authorized User
+        run: |
+          if [[ "${{ github.actor }}" != "F4bioo" ]]; then
+            echo "Unauthorized user. Exiting."
+            exit 1
+          fi
+
+  create-release-branch:
+    needs: check_environment
+    name: Create Release Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: develop
+
+      - name: Pull Latest Changes From develop
+        run: |
+          git pull --rebase origin develop      
+
+      - name: Read Gradle Version
+        id: gradle_version
+        run: |
+          VERSION=$(grep -oP 'version = "\K(.*?)(?=")' build.gradle.kts)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create Release Branch Name
+        run: echo "RELEASE_BRANCH=release/${{ env.VERSION }}" >> $GITHUB_ENV
+
+      - name: Setup Git Local Configs
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Create Release Branch
+        run: |
+          git checkout -b ${{ env.RELEASE_BRANCH }}
+          git push -u origin ${{ env.RELEASE_BRANCH }}
+
+      - name: Create Release Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --base master --head ${{ env.RELEASE_BRANCH }} --title "Deploy: Merge final release v${{ env.VERSION }}" --body "This PR includes the latest version for release v${{ env.VERSION }}" --reviewer "F4bioo"
