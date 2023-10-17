@@ -25,7 +25,7 @@ class StatusBarFactory : StatusBarWidgetFactory {
     }
 
     override fun isAvailable(project: Project): Boolean {
-        //GitRepository.provider(project.basePath).isNotNull()
+        // GitRepository.provider(project.basePath).isNotNull()
         return true
     }
 
