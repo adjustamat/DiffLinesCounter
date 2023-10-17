@@ -1,7 +1,9 @@
 package com.fappslab.difflinescounter.presentation
 
+import com.fappslab.difflinescounter.data.git.GitRepository
 import com.fappslab.difflinescounter.domain.usecase.GetDiffStatUseCase
 import com.fappslab.difflinescounter.domain.usecase.ScheduleUpdatesUseCase
+import com.fappslab.difflinescounter.extension.isNull
 import com.fappslab.difflinescounter.presentation.action.FileAction
 import com.fappslab.difflinescounter.presentation.action.MouseAction
 import com.intellij.ide.DataManager
@@ -79,19 +81,23 @@ class DiffStatusWidget(
     }
 
     private fun refreshChangesAction() {
-        ApplicationManager.getApplication().invokeLater {
-            val actionManager = ActionManager.getInstance()
-            val dataContext = DataManager.getInstance().getDataContext(component)
-            actionManager.getAction(ACTION_ID).actionPerformed(
-                AnActionEvent(
-                    null,
-                    dataContext,
-                    ActionPlaces.UNKNOWN,
-                    Presentation(),
-                    actionManager,
-                    0
+        if (GitRepository.provider(project.basePath).isNull()) {
+            component.showChanges(diffStat = null)
+        } else {
+            ApplicationManager.getApplication().invokeLater {
+                val actionManager = ActionManager.getInstance()
+                val dataContext = DataManager.getInstance().getDataContext(component)
+                actionManager.getAction(ACTION_ID).actionPerformed(
+                    AnActionEvent(
+                        null,
+                        dataContext,
+                        ActionPlaces.UNKNOWN,
+                        Presentation(),
+                        actionManager,
+                        0
+                    )
                 )
-            )
+            }
         }
     }
 }
