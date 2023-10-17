@@ -1,13 +1,11 @@
 package com.fappslab.difflinescounter.presentation
 
-import com.fappslab.difflinescounter.data.git.GitRepository
-import com.fappslab.difflinescounter.data.service.ProcessExecutorImpl
 import com.fappslab.difflinescounter.data.repository.DiffLinesCounterRepositoryImpl
+import com.fappslab.difflinescounter.data.service.ProcessExecutorImpl
 import com.fappslab.difflinescounter.data.source.DiffLinesCounterDataSourceCmdImpl
 import com.fappslab.difflinescounter.domain.repository.DiffLinesCounterRepository
 import com.fappslab.difflinescounter.domain.usecase.GetDiffStatUseCase
 import com.fappslab.difflinescounter.domain.usecase.ScheduleUpdatesUseCase
-import com.fappslab.difflinescounter.extension.orFalse
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.wm.StatusBar
@@ -27,9 +25,8 @@ class StatusBarFactory : StatusBarWidgetFactory {
     }
 
     override fun isAvailable(project: Project): Boolean {
-        return runCatching {
-            GitRepository.provider(project.basePath)
-        }.getOrNull().orFalse()
+        //GitRepository.provider(project.basePath).isNotNull()
+        return true
     }
 
     override fun createWidget(project: Project): StatusBarWidget {

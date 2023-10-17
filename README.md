@@ -23,14 +23,16 @@ The inception of DiffLinesCounter was rooted in the necessity to assess the volu
 
 Upon installation, a new widget will be displayed on the IntelliJ IDEA status bar. This widget will update automatically as you modify the code. If you wish, you can click on the widget to manually update the line count.
 
-<img src="sources/frame.png" alt="frame" width="700"/>
+![frame.png](images/frame.png)
+
+<img src="images/ide.png" alt="frame" width="700"/>
 
 ## Contributing 🤝
 
 Contributions are welcome! Feel free to open an Issue or create a Pull Request.
 
 <a href='https://plugins.jetbrains.com/plugin/22879'>
-  <img alt='Get from Marketplace' src='sources/button.svg' width='250'/>
+  <img alt='Get from Marketplace' src='images/button.svg' width='250'/>
 </a>
 
 <!-- end description -->
