@@ -1,1 +1,3 @@
 Deploy
+Merge
+Revert
