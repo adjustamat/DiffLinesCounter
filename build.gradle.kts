@@ -1,11 +1,12 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.0"
-    id("org.jetbrains.intellij") version "1.15.0"
+    alias(libs.plugins.org.jetbrains.kotlin.jvm)
+    alias(libs.plugins.org.jetbrains.intellij)
+    alias(libs.plugins.org.jetbrains.changelog)
 }
 
 group = "com.fappslab"
-version = "2.2.3"
+version = "2.2.4"
 
 repositories {
     mavenCentral()
@@ -14,10 +15,15 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2022.2.5")
+    version.set("2023.3.1")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf(/* Plugin Dependencies */))
+}
+
+changelog {
+    version.set(project.version.toString())
+    path.set("${project.projectDir}/CHANGELOG.md")
 }
 
 tasks {
@@ -32,7 +38,13 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("222")
-        untilBuild.set("232.*")
+        untilBuild.set("250.*")
+        changeNotes.set(provider {
+            changelog.renderItem(
+                changelog.get(project.version.toString()),
+                org.jetbrains.changelog.Changelog.OutputType.HTML
+            )
+        })
     }
 
     signPlugin {
@@ -51,7 +63,7 @@ dependencies {
         exclude(group = "org.slf4j")
     }
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.8.21")
-    testImplementation("io.mockk:mockk:1.12.0")
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.mockk)
 }
