@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.fappslab"
-version = "2.2.5"
+version = "2.2.6"
 
 repositories {
     mavenCentral()
@@ -15,7 +15,7 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2023.3.1")
+    version.set("2024.1.3")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf(/* Plugin Dependencies */))
@@ -38,7 +38,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("222")
-        untilBuild.set("233.*")
+        untilBuild.set("241.*")
         changeNotes.set(provider {
             changelog.renderItem(
                 changelog.get(project.version.toString()),
