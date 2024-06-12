@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.6] - Jun 12, 2024
+### Added
+- Created a shortcut `ctrl + alt + D` for refreshing the Git repository status.
+  - Created a new action to the Git menu for quick refresh.
+- Corrected until-build version to 241.*
+
 ## [2.2.5] - Jun 11, 2024
 ### Fixed
 - Corrected until-build version to 233.*

@@ -1,16 +1,14 @@
 package com.fappslab.difflinescounter.presentation
 
 import com.fappslab.difflinescounter.data.git.GitRepository
+import com.fappslab.difflinescounter.domain.model.ActionPlacesType
 import com.fappslab.difflinescounter.domain.usecase.GetDiffStatUseCase
 import com.fappslab.difflinescounter.domain.usecase.ScheduleUpdatesUseCase
 import com.fappslab.difflinescounter.extension.isNull
+import com.fappslab.difflinescounter.extension.refreshChangesActions
 import com.fappslab.difflinescounter.presentation.action.FileAction
 import com.fappslab.difflinescounter.presentation.action.MouseAction
 import com.intellij.ide.DataManager
-import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.ActionPlaces
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.Presentation
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFileManager
@@ -23,7 +21,6 @@ import kotlinx.coroutines.launch
 import javax.swing.JComponent
 
 private const val REFRESH_DELAY = 30L
-private const val ACTION_ID = "ChangesView.Refresh"
 
 class DiffStatusWidget(
     private val project: Project,
@@ -48,7 +45,7 @@ class DiffStatusWidget(
     }
 
     override fun ID(): String {
-        return PLUGIN_NAME
+        return ID
     }
 
     override fun dispose() {
@@ -85,18 +82,8 @@ class DiffStatusWidget(
             component.showChanges(diffStat = null)
         } else {
             ApplicationManager.getApplication().invokeLater {
-                val actionManager = ActionManager.getInstance()
                 val dataContext = DataManager.getInstance().getDataContext(component)
-                actionManager.getAction(ACTION_ID).actionPerformed(
-                    AnActionEvent(
-                        null,
-                        dataContext,
-                        ActionPlaces.UNKNOWN,
-                        Presentation(),
-                        actionManager,
-                        0
-                    )
-                )
+                dataContext.refreshChangesActions(ActionPlacesType.STATUS_BAR_PLACE)
             }
         }
     }

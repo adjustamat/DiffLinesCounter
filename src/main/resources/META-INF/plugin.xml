@@ -26,7 +26,23 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <statusBarWidgetFactory
-                implementation="com.fappslab.difflinescounter.presentation.StatusBarFactory" id="DiffLinesCounter"/>
+                id="com.fappslab.difflinescounter.presentation.StatusBarFactory"
+                implementation="com.fappslab.difflinescounter.presentation.StatusBarFactory"/>
     </extensions>
+
+    <actions>
+        <action id="com.fappslab.difflinescounter.presentation.action.RefreshAction"
+                class="com.fappslab.difflinescounter.presentation.action.RefreshAction"
+                text="DiffLinesCounter Refresh"
+                description="Refresh git repository status"
+                icon="AllIcons.Actions.Refresh">
+            <keyboard-shortcut
+                    first-keystroke="alt shift D"
+                    keymap="$default"/>
+            <add-to-group
+                    group-id="VcsGroups"
+                    anchor="last"/>
+        </action>
+    </actions>
 
 </idea-plugin>
