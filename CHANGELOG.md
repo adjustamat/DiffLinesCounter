@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.5] - Jun 11, 2024
+### Fixed
+- Corrected until-build version to 233.*
+
 ## [2.2.4] - Jun 11, 2024
 ### Changed
 - Migrated to using catalogs for dependency version management.

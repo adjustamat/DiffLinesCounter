@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.fappslab"
-version = "2.2.4"
+version = "2.2.5"
 
 repositories {
     mavenCentral()
@@ -38,7 +38,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("222")
-        untilBuild.set("250.*")
+        untilBuild.set("233.*")
         changeNotes.set(provider {
             changelog.renderItem(
                 changelog.get(project.version.toString()),
