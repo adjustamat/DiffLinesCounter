@@ -68,7 +68,8 @@ class DiffStatusWidget(
 
     private fun setupFilesChangeTracker() {
         connection.subscribe(
-            VirtualFileManager.VFS_CHANGES, FileAction {
+            VirtualFileManager.VFS_CHANGES,
+            FileAction {
                 coroutineScope.launch {
                     val diffStat = getDiffStatUseCase(project.basePath)
                     component.showChanges(diffStat)

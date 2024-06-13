@@ -7,13 +7,17 @@ mockkVersion = "1.12.0"
 kotlinVersion = "1.9.24"
 changelogVersion = "2.2.0"
 intellijVersion = "1.17.3"
+# Quality
+detektVersion = "1.22.0"
 
 [libraries]
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTestVersion" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlinTestVersion" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockkVersion" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detektVersion" }
 
 [plugins]
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
 org-jetbrains-changelog = { id = "org.jetbrains.changelog", version.ref = "changelogVersion" }
 org-jetbrains-intellij = { id = "org.jetbrains.intellij", version.ref = "intellijVersion" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektVersion" }

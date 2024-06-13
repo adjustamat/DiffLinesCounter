@@ -9,8 +9,8 @@ on:
       - develop
 
 jobs:
-  check-tests:
-    name: Check Tests
+  check-quality:
+    name: Check Quality
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -31,6 +31,9 @@ jobs:
 
       - name: Grant Gradlew Permission
         run: chmod +x gradlew
+
+      - name: Run Detekt
+        run: ./gradlew detektAll
 
       - name: Run Tests
         run: ./gradlew test

@@ -1,9 +1,13 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 plugins {
     id("java")
     alias(libs.plugins.org.jetbrains.kotlin.jvm)
     alias(libs.plugins.org.jetbrains.intellij)
     alias(libs.plugins.org.jetbrains.changelog)
+    alias(libs.plugins.detekt)
 }
+apply(from = "$rootDir/config/detekt/detekt-build.gradle")
 
 group = "com.fappslab"
 version = "2.2.6"
@@ -56,6 +60,30 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+
+    // Register a Detekt task
+    register<Detekt>("detektAll") {
+        description = "Runs detekt on the whole project."
+        buildUponDefaultConfig = true
+        allRules = true
+        config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+        setSource(files("src/main/java", "src/test/java", "src/main/kotlin", "src/test/kotlin"))
+        include("**/*.kt")
+        include("**/*.kts")
+        exclude("**/resources/**")
+        exclude("**/build/**")
+        reports {
+            xml.required.set(true)
+            html.required.set(true)
+            txt.required.set(true)
+            sarif.required.set(false)
+        }
+    }
+
+    // Ensure Detekt runs before any build
+    /*named("build") {
+        dependsOn("detektAll")
+    }*/
 }
 
 dependencies {

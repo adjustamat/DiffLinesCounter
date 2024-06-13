@@ -9,7 +9,8 @@ private const val ICON_PATH = "AllIcons.Actions.Refresh"
 private const val TOOLTIP_FORMAT = "%d files changed, %d insertions(+), %d deletions(-)"
 
 private const val TEXT_FORMAT = "%d(+%d : -%d)"
-//private const val TEXT_FORMAT = "<html>%d(<font color='#499C54'>%d↑</font> : <font color='#FF6347'>%d↓</font>)</html>"
+// private const val TEXT_FORMAT =
+//    "<html>%d(<font color='#499C54'>%d↑</font> : <font color='#FF6347'>%d↓</font>)</html>"
 
 class DiffStatusLabel : JLabel() {
 
@@ -39,6 +40,6 @@ class DiffStatusLabel : JLabel() {
 
     private fun DiffStat.formatForText(): String {
         val totalChanges = insertions.orZero() + deletions.orZero()
-        return String.format(TEXT_FORMAT, totalChanges, insertions, deletions)
+        return TEXT_FORMAT.format(totalChanges, insertions, deletions)
     }
 }

@@ -1,7 +1,7 @@
 package com.fappslab.difflinescounter.data.source
 
-import com.fappslab.difflinescounter.data.service.ProcessExecutor
 import com.fappslab.difflinescounter.data.model.toDiffStat
+import com.fappslab.difflinescounter.data.service.ProcessExecutor
 import com.fappslab.difflinescounter.domain.model.DiffStat
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
