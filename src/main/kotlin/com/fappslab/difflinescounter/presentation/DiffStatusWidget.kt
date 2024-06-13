@@ -84,7 +84,7 @@ class DiffStatusWidget(
         } else {
             ApplicationManager.getApplication().invokeLater {
                 val dataContext = DataManager.getInstance().getDataContext(component)
-                dataContext.refreshChangesActions(ActionPlacesType.STATUS_BAR_PLACE)
+                dataContext.refreshChangesActions(ActionPlacesType.StatusBarPlace)
             }
         }
     }

@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.2.7] - Jun 13, 2024
+### Added
+- Structured Gradle properties using buildSrc.
+- Minor bug fixes and optimizations
+
 ## [2.2.6] - Jun 12, 2024
 ### Added
 - Created a shortcut `ctrl + alt + D` for refreshing the Git repository status.

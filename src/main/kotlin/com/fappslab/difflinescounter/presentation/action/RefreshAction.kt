@@ -11,7 +11,7 @@ class RefreshAction : AnAction() {
     override fun actionPerformed(event: AnActionEvent) {
         ApplicationManager.getApplication().invokeLater {
             event.dataContext.refreshChangesActions(
-                placeType = ActionPlacesType.KEYBOARD_SHORTCUT,
+                placeType = ActionPlacesType.KeyboardShortcut,
                 inputEvent = event.inputEvent,
                 modifiers = event.modifiers
             )

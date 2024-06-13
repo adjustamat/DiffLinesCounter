@@ -1,4 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import org.jetbrains.changelog.markdownToHTML
+import java.text.SimpleDateFormat
+import java.util.*
 
 plugins {
     id("java")
@@ -9,8 +12,8 @@ plugins {
 }
 apply(from = "$rootDir/config/detekt/detekt-build.gradle")
 
-group = "com.fappslab"
-version = "2.2.6"
+group = Config.pluginGroup
+version = Config.pluginVersion
 
 repositories {
     mavenCentral()
@@ -19,8 +22,11 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2024.1.3")
-    type.set("IC") // Target IDE Platform
+    pluginName.set(Config.pluginName)
+    version.set(Config.platformVersion)
+    type.set(Config.platformType)
+    downloadSources.set(Config.shouldDownloadPlatformSources)
+    updateSinceUntilBuild.set(Config.shouldAutoUpdateSinceUntilBuild)
 
     plugins.set(listOf(/* Plugin Dependencies */))
 }
@@ -41,14 +47,57 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("222")
-        untilBuild.set("241.*")
+        version.set(Config.pluginVersion)
+        sinceBuild.set(Config.pluginSinceBuild)
+
+        pluginDescription.set(
+            provider {
+                val readmeFile = File(projectDir, "README.md")
+                if (!readmeFile.exists()) {
+                    throw GradleException(
+                        """
+                            The README.md file is missing from the project directory.
+                            Please ensure the file is present to extract the plugin description.
+                        """.trimIndent()
+                    )
+                }
+
+                val content = readmeFile.readText()
+                val startMarker = "<!-- start description -->"
+                val endMarker = "<!-- end description -->"
+
+                val startIndex = content.indexOf(startMarker)
+                val endIndex = content.indexOf(endMarker)
+
+                if (startIndex == -1 || endIndex == -1) {
+                    throw GradleException(
+                        """
+                            Could not find the required description markers in README.md.
+                            Make sure the following markers are present in the file:
+                            $startMarker and $endMarker
+                        """.trimIndent()
+                    )
+                }
+
+                val description = content.substring(startIndex + startMarker.length, endIndex).trim()
+                markdownToHTML(description)
+            }
+        )
+
         changeNotes.set(provider {
             changelog.renderItem(
                 changelog.get(project.version.toString()),
                 org.jetbrains.changelog.Changelog.OutputType.HTML
             )
         })
+    }
+
+    runPluginVerifier {
+        val ideVersionsList = Config.testedIdeVersions
+            .map { it.trim() }
+            .filter { it.isNotEmpty() }
+
+        ideVersions.set(ideVersionsList)
     }
 
     signPlugin {
@@ -59,6 +108,15 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
+    }
+
+    changelog {
+        version.set(Config.pluginVersion)
+        header.set(provider {
+            val dateFormat = SimpleDateFormat("MMM dd, yyyy")
+            val currentDate = dateFormat.format(Date())
+            "[${project.version}] - $currentDate"
+        })
     }
 
     // Register a Detekt task
@@ -79,11 +137,6 @@ tasks {
             sarif.required.set(false)
         }
     }
-
-    // Ensure Detekt runs before any build
-    /*named("build") {
-        dependsOn("detektAll")
-    }*/
 }
 
 dependencies {
