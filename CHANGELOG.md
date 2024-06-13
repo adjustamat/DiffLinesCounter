@@ -7,7 +7,7 @@
 
 ## [2.2.6] - Jun 12, 2024
 ### Added
-- Created a shortcut `ctrl + alt + D` for refreshing the Git repository status.
+- Created a shortcut `Alt + Shift + D` for refreshing the Git repository status.
   - Created a new action to the Git menu for quick refresh.
 - Corrected until-build version to 241.*
 - Implemented Detekt for static code analysis.
