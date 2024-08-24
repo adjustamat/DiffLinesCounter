@@ -1,5 +1,5 @@
 <!-- start description -->
-# DiffLinesCounter
+# git-reminder
 
 <img src="src/main/resources/META-INF/pluginIcon.svg" width="150" alt="Plugin icon"/>
 
@@ -11,13 +11,6 @@ The inception of DiffLinesCounter was rooted in the necessity to assess the volu
 - Shows the number of modified files.
 - Real-time updates as you modify the code.
 - Click to manually update the line count.
-
-## Installation 🔧
-
-1. Navigate to the JetBrains Plugin Repository from your IntelliJ IDEA or use the [link here](https://plugins.jetbrains.com/plugin/22879).
-2. In the search bar, type `DiffLinesCounter` and hit enter.
-3. Click on `Install` to add the plugin to your IDE.
-4. Restart IntelliJ IDEA for the changes to take effect.
 
 ## Usage 🛠️
 
