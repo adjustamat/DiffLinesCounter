@@ -1,68 +1,86 @@
 package com.chriscarini.jetbrains.gitpushreminder.settings;
 
+import java.util.Objects;
+import com.chriscarini.jetbrains.gitpushreminder.settings.SettingsManager.MySettings;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
-
 /**
- * The {@link SettingsManager} for this plugin; settings will be stored out to and read from {@code gitPushReminder.xml}.
+ * Settings for this plugin will be stored in and read from {@code gitReminder.xml}.
  */
-@State(name = "gitPushReminder", storages = @Storage(value = "gitPushReminder.xml", roamingType = RoamingType.PER_OS))
-public class SettingsManager implements PersistentStateComponent<SettingsManager.GitPushReminderSettingsState> {
-    private GitPushReminderSettingsState myState;
+@State(name="gitReminder", storages=@Storage(value="gitReminder.xml"))
+public class SettingsManager
+ implements PersistentStateComponent<MySettings>
+{
+private MySettings persistentSettings;
+public static Project project;
 
-    public static SettingsManager getInstance() {
-        return ApplicationManager.getApplication().getService(SettingsManager.class);
-    }
+public static SettingsManager getInstance()
+{
+   return ApplicationManager.getApplication().getService(SettingsManager.class);
+}
 
-    @NotNull
-    @Override
-    public GitPushReminderSettingsState getState() {
-        if (myState == null) {
-            myState = new GitPushReminderSettingsState();
-        }
-        return myState;
-    }
+@NotNull
+@Override
+public SettingsManager.MySettings getState()
+{
+   if(persistentSettings == null) {
+      persistentSettings = new MySettings();
+   }
+   return persistentSettings;
+}
 
-    @Override
-    public void loadState(@NotNull final GitPushReminderSettingsState gitPushReminderSettingsState) {
-        myState = gitPushReminderSettingsState;
-    }
+@Override
+public void loadState(@NotNull final SettingsManager.MySettings mySettings)
+{
+   persistentSettings = mySettings;
+}
 
-    public static class GitPushReminderSettingsState {
-
-        public boolean checkAllBranches;
-        public boolean countUntrackedBranchAsPushed;
-        public boolean showDialog;
-        public boolean showSwitchDialog;
-
-        public GitPushReminderSettingsState() {
-            this.checkAllBranches = false;
-            this.countUntrackedBranchAsPushed = false;
-            this.showDialog = true;
-            this.showSwitchDialog = false;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            GitPushReminderSettingsState that = (GitPushReminderSettingsState) o;
-            return checkAllBranches == that.checkAllBranches &&
-                    countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed &&
-                    showDialog == that.showDialog &&
-                    showSwitchDialog == that.showSwitchDialog;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, showDialog, showSwitchDialog);
-        }
-    }
+public static class MySettings
+{
+   public boolean checkAllBranches;
+   public boolean countUntrackedBranchAsPushed;
+   public boolean showClosePushDialog;
+   public boolean showCloseCommitDialog;
+   public boolean showStatusbar;
+   public int reminderIntervalMinutes;
+   public boolean showSwitchDialog;
+   
+   public MySettings()
+   {
+      this.checkAllBranches = false;
+      this.countUntrackedBranchAsPushed = false;
+      this.showClosePushDialog = true;
+      this.showCloseCommitDialog = true;
+      this.showStatusbar = true;
+      this.reminderIntervalMinutes = 0;
+      this.showSwitchDialog = false;
+   }
+   
+   @Override
+   public boolean equals(Object o)
+   {
+      if(this == o) return true;
+      if(o == null || getClass() != o.getClass()) return false;
+      MySettings other = (MySettings) o;
+      return checkAllBranches == other.checkAllBranches &&
+              countUntrackedBranchAsPushed == other.countUntrackedBranchAsPushed &&
+              showClosePushDialog == other.showClosePushDialog &&
+              showCloseCommitDialog == other.showCloseCommitDialog &&
+              showStatusbar == other.showStatusbar &&
+              reminderIntervalMinutes == other.reminderIntervalMinutes &&
+              showSwitchDialog == other.showSwitchDialog;
+   }
+   
+   @Override
+   public int hashCode()
+   {
+      return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, showClosePushDialog,
+       showCloseCommitDialog, showSwitchDialog, showStatusbar, reminderIntervalMinutes);
+   }
+}
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.0] - Aug 24, 2024
+### Changed
+- The plugin name (from DiffLinesCounter to Git Reminder)
+### Added
+- Reminders
+- Settings
+- The functionality of GitPushReminder by Chris Carini
+
 ## [2.2.7] - Jun 13, 2024
 ### Added
 - Structured Gradle properties using buildSrc.

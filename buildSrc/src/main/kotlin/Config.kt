@@ -1,7 +1,7 @@
 object Config {
     const val pluginGroup: String = "com.fappslab"
     const val pluginName: String = "DiffLinesCounter"
-    const val pluginVersion: String = "2.2.7"
+    const val pluginVersion: String = "3.0.0"
     const val pluginSinceBuild: String = "222"
     const val pluginUntilBuild: String = "241.*"
 

@@ -1,5 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.IntelliJPlugin
+import org.jetbrains.intellij.intellijPlugin
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -140,11 +142,10 @@ tasks {
 }
 
 dependencies {
+   intellij{
+      plugins.set(listOf("Git4Idea"))
+   }
     implementation(dependencyNotation = "org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r") {
         exclude(group = "org.slf4j")
     }
-
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.kotlin.test)
-    testImplementation(libs.mockk)
 }
